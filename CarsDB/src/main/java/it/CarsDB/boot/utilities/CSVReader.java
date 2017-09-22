@@ -5,9 +5,11 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.CarsDB.boot.exceptions.CarsException;
+
 public class CSVReader {
 
-	public static List<List<String>> readFile(String path)
+	public static List<List<String>> readFile(String path) throws CarsException
 	{
 		List<List<String>> listOfArrays = new ArrayList<List<String>>();
 		
@@ -32,7 +34,7 @@ public class CSVReader {
 		
 		catch(Exception e)
 		{
-			System.out.println(e.getMessage());
+			throw new CarsException("Exception in readFile in class CSVReader", e);
 		}
 		
 		return listOfArrays;

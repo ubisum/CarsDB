@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.CarsDB.boot.DAO.ResellerInterface;
+import it.CarsDB.boot.exceptions.CarsException;
 import it.CarsDB.boot.model.Reseller;
 import it.CarsDB.boot.utilities.CSVReader;
 
@@ -24,7 +25,7 @@ public class ResellerController {
 	private ResellerInterface repository;
 	private boolean dbPopulated = false;
 	
-	private void insertResellers(String csv_path)
+	private void insertResellers(String csv_path) throws CarsException
 	{
 		// read files
 		List<List<String>> resellersData = CSVReader.readFile(csv_path);
